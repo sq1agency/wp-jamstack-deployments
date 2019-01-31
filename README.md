@@ -1,6 +1,12 @@
-# JAMstack Deployments [BETA]
+# JAMstack Deployments (AWS Amplify)
 
-A WordPress plugin for JAMstack deployments on Netlify (and other platforms).
+A WordPress plugin for JAMstack deployments on AWS Amplify (and other platforms).
+
+## AWS Amplify
+
+We will trigger a build by posting an an endpoint. This will trigger a build for our Gatsby site in AWS Amplify. Here is a tutorial on how to set this up.
+[AWS Amplify Console and Triggering a Build from an API Endpoint](https://medium.com/ansira-development/aws-amplify-console-and-triggering-a-build-from-an-api-endpoint-cff5f99a5a7f)
+
 
 ## Description
 
