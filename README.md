@@ -2,6 +2,8 @@
 
 A WordPress plugin for JAMstack deployments on AWS Amplify (and other platforms).
 
+<img src="deploy_button.png" width="280" height="67" />
+
 ## AWS Amplify
 
 We will trigger a build by sending a POST request to an endpoint. This will trigger a build for our Gatsby site in AWS Amplify. Here is a tutorial on how to set this up.
