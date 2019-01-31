@@ -2,7 +2,7 @@
 
 A WordPress plugin for JAMstack deployments on AWS Amplify (and other platforms).
 
-<img src="deploy_button.png" width="280" height="67" />
+<img src="./deploy_button.png" width="280" height="67" />
 
 ## AWS Amplify
 
