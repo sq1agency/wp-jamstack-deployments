@@ -22,7 +22,7 @@ class SettingsScreen
     public static function addMenu()
     {
         add_options_page(
-            'JAMstack Deployments (Settings)',
+            'Deployment Settings',
             'Deployments',
             'manage_options',
             'wp-jamstack-deployments-settings',

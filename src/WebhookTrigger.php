@@ -133,12 +133,14 @@ class WebhookTrigger
         ?><style>
 
         #wpadminbar .wp-jamstack-deployments-button > a {
-            background-color: rgba(255, 255, 255, .25);
+            background-color: rgba(238,114,17, 1);
             color: #FFFFFF !important;
+            padding-left: 20px !important;
+            padding-right: 20px !important;
         }
         #wpadminbar .wp-jamstack-deployments-button > a:hover,
         #wpadminbar .wp-jamstack-deployments-button > a:focus {
-            background-color: rgba(255, 255, 255, .25) !important;
+            background-color: rgba(214, 125, 55, 1) !important;
         }
 
         </style><?php
@@ -205,8 +207,16 @@ class WebhookTrigger
             return;
         }
 
+        /* 
+            This will be dynamic coming from some properties set in the admin
+        */
+        $payload = array('repoName' => 'ansira-gatsby', 'branchName' => 'development', 'jobType' => 'RELEASE', 'source' => 'api.dev.ansira.io');
+
         $args = [
-            'blocking' => false
+            'blocking' => false,
+            'headers'     => array('Content-Type' => 'application/json; charset=utf-8'),
+            'data_format' => 'body',
+            'body'        => json_encode($payload)
         ];
 
         $method = jamstack_deployments_get_webhook_method();
