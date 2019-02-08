@@ -208,11 +208,12 @@ class WebhookTrigger
         }
 
         $deployment_environment = jamstack_deployments_get_webhook_enviroment();
+        $app_id = jamstack_deployments_get_webhook_app_id();
 
         /* 
             This will be dynamic coming from some properties set in the admin
         */
-        $payload = array('repo_name' => 'ansira-gatsby', 'branch_name' => $deployment_environment, 'job_type' => 'RELEASE', 'source' => site_url());
+        $payload = array('repo_name' => 'ansira-gatsby', 'branch_name' => $deployment_environment, 'job_type' => 'RELEASE', 'source' => site_url(), 'app_id' => $app_id);
 
         $args = [
             'blocking' => false,

@@ -36,6 +36,12 @@ class Settings
             'description' => 'Your Webhook URL.'
         ]);
 
+        add_settings_field('webhook_amplify_app_id', 'Amplify App ID', ['Crgeary\JAMstackDeployments\Field', 'text'], $key, 'general', [
+            'name' => "{$key}[webhook_amplify_app_id]",
+            'value' => jamstack_deployments_get_webhook_app_id(),
+            'description' => 'This is the app id for the aws amplify project in the console.'
+        ]);
+
         add_settings_field('webhook_method', 'Webhook Method', ['Crgeary\JAMstackDeployments\Field', 'select'], $key, 'general', [
             'name' => "{$key}[webhook_method]",
             'value' => jamstack_deployments_get_webhook_method(),

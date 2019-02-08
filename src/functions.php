@@ -23,6 +23,18 @@ if (!function_exists('jamstack_deployments_get_webhook_url')) {
     }
 }
 
+if (!function_exists('jamstack_deployments_get_webhook_app_id')) {
+    /**
+     * Return the webhook url
+     *
+     * @return string|null
+     */
+    function jamstack_deployments_get_webhook_app_id() {
+        $options = jamstack_deployments_get_options();
+        return isset($options['webhook_amplify_app_id']) ? $options['webhook_amplify_app_id'] : '#########';
+    }
+}
+
 if (!function_exists('jamstack_deployments_get_webhook_method')) {
     /**
      * Return the webhook method (get/post)
