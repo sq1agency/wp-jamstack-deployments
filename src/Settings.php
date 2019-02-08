@@ -47,6 +47,19 @@ class Settings
             'description' => 'Set either GET or POST for the webhook request. Defaults to POST.'
         ]);
 
+
+        add_settings_field('webhook_env', 'Deployment Enviroment', ['Crgeary\JAMstackDeployments\Field', 'select'], $key, 'general', [
+            'name' => "{$key}[webhook_env]",
+            'value' => jamstack_deployments_get_webhook_enviroment(),
+            'choices' => [
+                'development' => 'development',
+                'staging' => 'staging',
+                'production' => 'production'
+            ],
+            'default' => 'development',
+            'description' => 'Set the deployment enviroment that will be triggered when you "Deploy Website"'
+        ]);
+
         add_settings_field('webhook_post_types', 'Post Types', ['Crgeary\JAMstackDeployments\Field', 'checkboxes'], $key, 'general', [
             'name' => "{$key}[webhook_post_types]",
             'value' => isset($option['webhook_post_types']) ? $option['webhook_post_types'] : [],

@@ -36,6 +36,19 @@ if (!function_exists('jamstack_deployments_get_webhook_method')) {
     }
 }
 
+if (!function_exists('jamstack_deployments_get_webhook_enviroment')) {
+    /**
+     * Return the deployment enviroment that will be triggerd
+     *
+     * @return string
+     */
+    function jamstack_deployments_get_webhook_enviroment() {
+        $options = jamstack_deployments_get_options();
+        $env = isset($options['webhook_env']) ? $options['webhook_env'] : 'development';
+        return mb_strtolower($env);
+    }
+}
+
 if (!function_exists('jamstack_deployments_fire_webhook')) {
     /**
      * Fire a request to the webhook.
