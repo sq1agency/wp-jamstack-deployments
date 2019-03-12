@@ -1,5 +1,27 @@
 <?php
 
+function wpse_load_plugin_css() {
+	wp_enqueue_script('deployment-script', plugin_dir_url( __FILE__ ) . 'scripts.js' );
+    wp_enqueue_style('deployment-styles', plugin_dir_url( __FILE__ ) . 'styles.css' );
+}
+add_action( 'admin_print_styles', 'wpse_load_plugin_css' );
+
+if (!function_exists('jamstack_webhook_notification')) {
+    add_action( 'rest_api_init', function () {
+        register_rest_route( 'wp-jamstack-deployments/v1', '/webhook', array(
+        'methods'  => 'POST',
+        'callback' => 'my_awesome_func',
+        ) );
+    } );
+
+    function my_awesome_func( $request ) {
+		global $wpdb;
+        $data = $request->get_json_params();
+		$result = $wpdb->get_results('SELECT * FROM `wp_jamstack_deployments`');
+		return $result;
+    }
+}
+
 if (!function_exists('jamstack_deployments_get_options')) {
     /**
      * Return the plugin settings/options
@@ -74,7 +96,7 @@ if (!function_exists('jamstack_deployments_fire_webhook')) {
 
 if (!function_exists('jamstack_deployments_force_fire_webhook')) {
     /**
-     * Fire a request to the webhook immediately. 
+     * Fire a request to the webhook immediately.
      *
      * @return void
      */

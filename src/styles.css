@@ -1,0 +1,20 @@
+.deployment-button{
+	background-color: green !important;
+    color: #fff !important;
+    border: solid green;
+    height: 40px !important;
+    width: 30% !important;
+    line-height: 35px !important;
+    text-align: center !important;
+    font-size: 16px !important;
+    border-bottom: solid #045404 1px !important;
+	margin-bottom:20px !important;
+}
+
+.jamstack-admin-deploy-started h4{;
+	font-size: 1rem !important;
+    background-color:  #5fff83c7 !important;
+    padding:  15px !important;
+    border:  solid #3fe867 1px !important;
+    line-height: 1.5rem !important;
+}

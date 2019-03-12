@@ -58,7 +58,7 @@ class Field
      * @return void
      */
     public static function checkboxes($args = [])
-    {   
+    {
         $args['value'] = is_array($args['value']) ? $args['value'] : [$args['value']];
 
         ?><fieldset>

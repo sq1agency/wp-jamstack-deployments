@@ -24,8 +24,8 @@ class Settings
         $key = CRGEARY_JAMSTACK_DEPLOYMENTS_OPTIONS_KEY;
 
         register_setting($key, $key, [__CLASS__, 'sanitize']);
-        add_settings_section('general', 'General', '__return_empty_string', $key);
-        
+        add_settings_section('general', 'Deployment Settings', '__return_empty_string', $key);
+
         // ...
 
         $option = jamstack_deployments_get_options();
@@ -66,21 +66,21 @@ class Settings
             'description' => 'Set the deployment enviroment that will be triggered when you "Deploy Website"'
         ]);
 
-        add_settings_field('webhook_post_types', 'Post Types', ['Crgeary\JAMstackDeployments\Field', 'checkboxes'], $key, 'general', [
-            'name' => "{$key}[webhook_post_types]",
-            'value' => isset($option['webhook_post_types']) ? $option['webhook_post_types'] : [],
-            'choices' => self::getPostTypes(),
-            'description' => 'Only selected post types will trigger a deployment when created, updated or deleted.',
-            'legend' => 'Post Types'
-        ]);
+//         add_settings_field('webhook_post_types', 'Post Types', ['Crgeary\JAMstackDeployments\Field', 'checkboxes'], $key, 'general', [
+//             'name' => "{$key}[webhook_post_types]",
+//             'value' => isset($option['webhook_post_types']) ? $option['webhook_post_types'] : [],
+//             'choices' => self::getPostTypes(),
+//             'description' => 'Only selected post types will trigger a deployment when created, updated or deleted.',
+//             'legend' => 'Post Types'
+//         ]);
 
-        add_settings_field('webhook_taxonomies', 'Taxonomies', ['Crgeary\JAMstackDeployments\Field', 'checkboxes'], $key, 'general', [
-            'name' => "{$key}[webhook_taxonomies]",
-            'value' => isset($option['webhook_taxonomies']) ? $option['webhook_taxonomies'] : [],
-            'choices' => self::getTaxonomies(),
-            'description' => 'Only selected taxonomies will trigger a deployment when their terms are created, updated or deleted.',
-            'legend' => 'Taxonomies'
-        ]);
+//         add_settings_field('webhook_taxonomies', 'Taxonomies', ['Crgeary\JAMstackDeployments\Field', 'checkboxes'], $key, 'general', [
+//             'name' => "{$key}[webhook_taxonomies]",
+//             'value' => isset($option['webhook_taxonomies']) ? $option['webhook_taxonomies'] : [],
+//             'choices' => self::getTaxonomies(),
+//             'description' => 'Only selected taxonomies will trigger a deployment when their terms are created, updated or deleted.',
+//             'legend' => 'Taxonomies'
+//         ]);
     }
 
     /**

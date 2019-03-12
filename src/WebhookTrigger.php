@@ -12,11 +12,11 @@ class WebhookTrigger
     public static function init()
     {
         add_action('admin_init', [__CLASS__, 'trigger']);
-        add_action('admin_bar_menu', [__CLASS__, 'adminBarTriggerButton']);
+        //add_action('admin_bar_menu', [__CLASS__, 'adminBarTriggerButton']);
 
         add_action('admin_footer', [__CLASS__, 'adminBarCss']);
         add_action('wp_footer', [__CLASS__, 'adminBarCss']);
-        
+
     }
 
     /**
@@ -98,7 +98,7 @@ class WebhookTrigger
         if (!self::canFireForTaxonomy($id, $tax_id, $tax_slug)) {
             return;
         }
-        
+
         self::fireWebhook();
     }
 
@@ -120,7 +120,7 @@ class WebhookTrigger
 
     /**
      * Show the admin bar css
-     * 
+     *
      * @todo move this somewhere else
      * @return void
      */
@@ -143,7 +143,8 @@ class WebhookTrigger
             background-color: rgba(214, 125, 55, 1) !important;
         }
 
-        </style><?php
+        </style>
+<?php
     }
 
     /**
@@ -162,7 +163,7 @@ class WebhookTrigger
 
         $bar->add_node([
             'id' => 'wp-jamstack-deployments',
-            'title' => 'Deploy Website',
+            'title' => 'Deploy Settings',
             'parent' => 'top-secondary',
             'href' => $uri,
             'meta' => [
@@ -186,7 +187,12 @@ class WebhookTrigger
 
         self::fireWebhook();
 
-        wp_redirect(admin_url('admin.php?page=wp-jamstack-deployments-settings'));
+// 		global $wpdb;
+// 		$wpdb->insert('wp-jamstack_deployments', array(
+//     		'deployment_status' => 'deploying',
+// 			));
+
+        wp_redirect(admin_url('admin.php?page=wp-jamstack-deployments-settings&jamstack-deploy-status=started-deploying'));
         exit;
     }
 
@@ -210,7 +216,7 @@ class WebhookTrigger
         $deployment_environment = jamstack_deployments_get_webhook_enviroment();
         $app_id = jamstack_deployments_get_webhook_app_id();
 
-        /* 
+        /*
             This will be dynamic coming from some properties set in the admin
         */
         $payload = array('repo_name' => 'ansira-gatsby', 'branch_name' => $deployment_environment, 'job_type' => 'RELEASE', 'source' => site_url(), 'app_id' => $app_id);
